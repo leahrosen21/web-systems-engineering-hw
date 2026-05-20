@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log In – Sniffer</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/auth.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR (minimal on auth pages) ===== -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="login.html" class="navbar-brand" aria-label="Sniffer home">
+        <span class="brand-paw" aria-hidden="true">🐾</span>
+        Sniffer
+      </a>
+      <!-- No full nav on auth pages — keep it clean -->
+    </div>
+  </nav>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="page-content auth-page" id="main-content">
+    <div class="auth-wrapper animate-in">
+
+      <div class="auth-decoration" aria-hidden="true">
+        <span class="paw-lg">🐾</span>
+        <span class="paw-sm">🐾</span>
+      </div>
+
+      <div class="auth-card card">
+        <div class="card-body">
+
+          <!-- Header -->
+          <div class="auth-header">
+            <h1>Welcome back!</h1>
+            <p>Log in to find your dog's next best friend.</p>
+          </div>
+
+          <!-- Error banner (hidden by default) -->
+          <div class="alert alert-error" id="login-error" role="alert" hidden>
+            Incorrect email or password. Please try again.
+          </div>
+
+          <!-- Login Form -->
+          <form id="login-form" novalidate aria-label="Login form">
+
+            <div class="form-group">
+              <label class="form-label" for="email">
+                Email Address <span class="required-star" aria-hidden="true">*</span>
+              </label>
+              <input
+                class="form-control"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="your@email.com"
+                required
+                autocomplete="email"
+                aria-describedby="email-error"
+              />
+              <span class="error-message" id="email-error" role="alert"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="password">
+                Password <span class="required-star" aria-hidden="true">*</span>
+              </label>
+              <div class="password-field">
+                <input
+                  class="form-control"
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Enter your password"
+                  required
+                  autocomplete="current-password"
+                  aria-describedby="password-error"
+                />
+                <button type="button" class="toggle-password" id="toggle-password" aria-label="Show password">
+                  Show
+                </button>
+              </div>
+              <span class="error-message" id="password-error" role="alert"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg">
+              Log In
+            </button>
+
+          </form>
+
+          <!-- Sign up link -->
+          <p class="auth-switch">
+            Don't have an account?
+            <a href="signup.html">Sign up for free</a>
+          </p>
+
+
+          <p class="forgot-password">
+            <a href="forgot-password.html">Forgot your password?</a>
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <span class="footer-brand">Sniffer</span>
+    </div>
+    <div class="container">
+      <p class="footer-copy">&copy; Copyright © 2026 Sniffer. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/data.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/login.js"></script>
+</body>
+</html>

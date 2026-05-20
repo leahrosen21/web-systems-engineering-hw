@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sniffer || My Profile</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/profile.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="home.html" class="navbar-brand" aria-label="Sniffer home">
+        <span class="brand-paw" aria-hidden="true"><img src="../images/heart-paw-yellow.png" alt="Sniffer paw icon" class="brand-logo"/></span>
+        Sniffer
+      </a>
+      <button class="navbar-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" role="list">
+        <li><a href="home.html">Discover</a></li>
+        <li><a href="matches.html">My Matches</a></li>
+        <li><a href="profile.html" class="active">Profile</a></li>
+        <li><a href="availability.html">Availability</a></li>
+        <li><a href="recommendations.html">Community</a></li>
+        <li><a href="login.html" id="nav-logout-link">Log Out</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="page-content" id="main-content">
+    <div class="container">
+
+      <!-- Success/Error banners -->
+      <div class="alert alert-success" id="save-success" role="status" hidden>
+        Profile saved successfully!
+      </div>
+      <div class="alert alert-error" id="save-error" role="alert" hidden></div>
+
+      <!-- ===== VIEW MODE ===== -->
+      <div id="view-mode" class="animate-in">
+
+        <!-- Profile hero -->
+        <div class="profile-hero card">
+          <div class="profile-avatar" aria-hidden="true" id="profile-avatar">🐕</div>
+          <div class="profile-hero-body">
+            <div class="profile-hero-info">
+              <h1 id="view-dog-name">Loading...</h1>
+              <p id="view-dog-meta" class="profile-meta"></p>
+              <div class="profile-tags" id="view-dog-tags"></div>
+            </div>
+            <button class="btn btn-primary" id="btn-edit" aria-label="Edit your profile">
+              Edit Profile
+            </button>
+          </div>
+        </div>
+
+        <div class="profile-grid">
+
+          <!-- Dog details card -->
+          <div class="card animate-in animate-in-delay-1">
+            <div class="card-body">
+              <h3 class="card-section-title">
+                <span aria-hidden="true">🐕</span> About <span id="view-dog-name-2"></span>
+              </h3>
+              <p id="view-dog-about" class="profile-about"></p>
+              <dl class="profile-details" id="view-dog-details">
+                <!-- Populated by JS -->
+              </dl>
+            </div>
+          </div>
+
+          <!-- Owner card -->
+          <div class="card animate-in animate-in-delay-2">
+            <div class="card-body">
+              <h3 class="card-section-title">
+                <span aria-hidden="true">👤</span> Owner Info
+              </h3>
+              <dl class="profile-details" id="view-owner-details">
+                <!-- Populated by JS -->
+              </dl>
+              <p id="view-owner-about" class="profile-about" style="margin-top: var(--space-md);"></p>
+            </div>
+          </div>
+
+          <!-- Preferences card -->
+          <div class="card animate-in animate-in-delay-3">
+            <div class="card-body">
+              <h3 class="card-section-title">
+                <span aria-hidden="true">🔍</span> Matching Preferences
+              </h3>
+              <dl class="profile-details" id="view-pref-details">
+                <!-- Populated by JS -->
+              </dl>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /view-mode -->
+
+      <!-- ===== EDIT MODE ===== -->
+      <div id="edit-mode" hidden>
+        <div class="edit-header">
+          <h2>Edit Your Profile</h2>
+          <button class="btn btn-outline btn-sm" id="btn-cancel">Cancel</button>
+        </div>
+
+        <form id="profile-form" novalidate aria-label="Edit profile form">
+
+          <!-- Dog section -->
+          <div class="card" style="margin-bottom: var(--space-lg);">
+            <div class="card-body">
+              <h3 class="card-section-title">
+                <span aria-hidden="true">🐕</span> Dog Profile
+              </h3>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="edit-dog-name">Dog's Name <span class="required-star">*</span></label>
+                  <input class="form-control" type="text" id="edit-dog-name" required />
+                  <span class="error-message" role="alert"></span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="edit-dog-age">Dog's Age <span class="required-star">*</span></label>
+                  <input class="form-control" type="number" id="edit-dog-age" min="0" max="30" required />
+                  <span class="error-message" role="alert"></span>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="edit-dog-breed">Breed</label>
+                  <input class="form-control" type="text" id="edit-dog-breed" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="edit-dog-size">Size</label>
+                  <select class="form-control" id="edit-dog-size">
+                    <option value="">Select</option>
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="edit-dog-energy">Energy Level</label>
+                  <select class="form-control" id="edit-dog-energy">
+                    <option value="">Select</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="edit-dog-personality">Personality</label>
+                  <select class="form-control" id="edit-dog-personality">
+                    <option value="">Select</option>
+                    <option value="Friendly">Friendly</option>
+                    <option value="Playful">Playful</option>
+                    <option value="Calm">Calm</option>
+                    <option value="Curious">Curious</option>
+                    <option value="Shy">Shy</option>
+                    <option value="Adventurous">Adventurous</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="edit-dog-vaccinated">Vaccination Status</label>
+                  <select class="form-control" id="edit-dog-vaccinated">
+                    <option value="">Select</option>
+                    <option value="Yes">Yes</option>
+                    <option value="Partial">Partial</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="edit-dog-play">Play Style</label>
+                  <select class="form-control" id="edit-dog-play">
+                    <option value="">Select</option>
+                    <option value="Indoor">Indoor</option>
+                    <option value="Outdoor">Outdoor</option>
+                    <option value="Both">Both</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="edit-dog-about">About Your Dog</label>
+                <textarea class="form-control" id="edit-dog-about" rows="4"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Owner section -->
+          <div class="card" style="margin-bottom: var(--space-lg);">
+            <div class="card-body">
+              <h3 class="card-section-title">
+                <span aria-hidden="true">👤</span> Owner Info
+              </h3>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="edit-location">Location <span class="required-star">*</span></label>
+                  <input class="form-control" type="text" id="edit-location" required />
+                  <span class="error-message" role="alert"></span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="edit-age">Your Age</label>
+                  <input class="form-control" type="number" id="edit-age" min="18" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="edit-about-owner">About You</label>
+                <textarea class="form-control" id="edit-about-owner" rows="3"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-lg" id="btn-save">
+              Save Changes
+            </button>
+            <button type="button" class="btn btn-outline btn-lg" id="btn-cancel-2">
+              Cancel
+            </button>
+          </div>
+
+        </form>
+      </div><!-- /edit-mode -->
+
+    </div><!-- /container -->
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <span class="footer-brand">Sniffer</span>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="home.html">Discover</a>
+        <a href="matches.html">Matches</a>
+        <a href="recommendations.html">Community</a>
+      </nav>
+    </div>
+    <div class="container">
+  <p class="footer-copy">
+      &copy; 2026 Sniffer. All rights reserved.
+    </p>
+      </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/profile.js"></script>
+</body>
+</html>

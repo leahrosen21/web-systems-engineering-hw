@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sniffer || Sign Up</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/auth.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="login.html" class="navbar-brand" aria-label="Sniffer home">
+        <span class="brand-paw" aria-hidden="true"><img src="../images/heart-paw-yellow.png" alt="Sniffer paw icon" class="brand-logo"/></span>
+        Sniffer
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="page-content auth-page" id="main-content">
+    <div class="auth-wrapper animate-in">
+
+      <!--
+      <div class="auth-decoration" aria-hidden="true">
+        <span class="paw-lg">🐾</span>
+        <span class="paw-sm">🐾</span>
+      </div>
+    -->
+
+      <div class="auth-card card">
+        <div class="card-body">
+
+          <div class="auth-header">
+            <h1>Create Your Account</h1>
+            <p>Set up your profile and start finding playdates for your dog.</p>
+          </div>
+
+          <!-- Global error banner -->
+          <div class="alert alert-error" id="signup-error" role="alert" hidden></div>
+          <!-- Success banner -->
+          <div class="alert alert-success" id="signup-success" role="status" hidden>
+            Account created! Redirecting you to the home page...
+          </div>
+
+          <!-- SIGNUP FORM -->
+          <form id="signup-form" novalidate aria-label="Create account form">
+
+            
+            <div class="form-section-title">
+                Your Profile
+              </div>
+            
+            <!-- Two-column grid for username + full name -->
+              <div class="form-grid-2"> 
+                <div class="form-group">
+                  <label class="form-label" for="username">
+                    Username <span class="required-star" aria-hidden="true">*</span>
+                  </label>
+                  <input class="form-control" type="text" id="username" name="username"
+                    placeholder="e.g. lucky_paws" required autocomplete="username" />
+                  <span class="error-message" role="alert"></span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="name">Full Name</label>
+                  <input class="form-control" type="text" id="name" name="name"
+                    placeholder="Your name" autocomplete="name" />
+                </div>
+              </div> 
+              
+              <div class="form-group">
+                <label class="form-label" for="email">
+                  Email Address <span class="required-star" aria-hidden="true">*</span>
+                </label>
+                <input class="form-control" type="email" id="email" name="email"
+                  placeholder="your@email.com" required autocomplete="email" />
+                <span class="error-message" role="alert"></span>
+              </div>
+
+
+              <!-- Two-column grid for password fields -->
+             <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="password">
+                    Password <span class="required-star" aria-hidden="true">*</span>
+                  </label>
+                  <div class="password-field">
+                    <input class="form-control" type="password" id="password" name="password"
+                      placeholder="Min. 6 characters" required autocomplete="new-password" />
+                    <button type="button" class="toggle-password" id="toggle-password" aria-label="Show password">Show</button>
+                  </div>
+                  <span class="error-message" role="alert"></span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="confirm-password">
+                    Confirm Password <span class="required-star" aria-hidden="true">*</span>
+                  </label>
+                  <input class="form-control" type="password" id="confirm-password"
+                    name="confirm-password" placeholder="Repeat password"
+                    required autocomplete="new-password"/>
+                  <span class="error-message" role="alert"></span>
+                </div>
+              </div>
+
+              <!-- Two-column grid for age and gender -->
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="age">Your Age</label>
+                  <input class="form-control" type="number" id="age" name="age"
+                    placeholder="e.g. 28" min="18" max="120" />
+                  <span class="error-message" role="alert"></span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="gender">Gender (optional)</label>
+                  <select class="form-control" id="gender" name="gender">
+                    <option value="">Prefer not to say</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Non-binary">Non-binary</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Two-column grid for location and phone -->
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="location">
+                    Location <span class="required-star" aria-hidden="true">*</span>
+                  </label>
+                  <select class="form-control" type="text" id="location" name="location" 
+                     required>
+                  <option value="" disabled selected>Choose a district</option>
+                  <option value="Jerusalem District">Jerusalem District</option>
+                  <option value="Tel Aviv District">Tel Aviv District</option>
+                  <option value="Haifa District">Haifa District</option>
+                  <option value="Central District">Central District</option>
+                  <option value="Northern District">Northern District</option>
+                  <option value="Southern District">Southern District</option>
+                  </select>
+                  <span class="error-message" role="alert"></span>
+                </div>
+              
+
+                <div class="form-group">
+                  <label class="form-label" for="phone">
+                    Phone Number <span class="required-star" aria-hidden="true">*</span>
+                  </label>
+                  <input class="form-control" type="tel" id="phone" name="phone"
+                    placeholder="05X-XXXXXXX" required autocomplete="tel" />
+                  <span class="form-hint">Israeli format, 10 digits starting with 0. Shared only after a match.</span>
+                  <span class="error-message" role="alert"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="about-owner">About You (optional)</label>
+                <textarea class="form-control" id="about-owner" name="about-owner" rows="3"
+                  maxlength="200" placeholder="Tell other dog owners a bit about yourself..."></textarea>
+                <div class="form-hint" id="owner-char-count">0/200</div>
+              </div>
+
+            <br>
+
+            <div class="form-section-title">
+                Your Dog's Profile
+              </div>
+
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="dog-name">
+                    Dog's Name <span class="required-star" aria-hidden="true">*</span>
+                  </label>
+                  <input class="form-control" type="text" id="dog-name" name="dog-name"
+                    placeholder="e.g. Buddy" required />
+                  <span class="error-message" role="alert"></span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="dog-age">
+                    Dog's Age (years) <span class="required-star" aria-hidden="true">*</span>
+                  </label>
+                  <input class="form-control" type="number" id="dog-age" name="dog-age"
+                    placeholder="e.g. 3" min="0" max="30" required />
+                  <span class="error-message" role="alert"></span>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+  <label class="form-label" for="dog-breed">Breed</label>
+
+  <select class="form-control" id="dog-breed" name="dog-breed">
+    <option value="" disabled selected>Select a breed</option>
+
+    <option value="French Bulldog">French Bulldog</option>
+    <option value="Labrador Retriever">Labrador Retriever</option>
+    <option value="Golden Retriever">Golden Retriever</option>
+    <option value="German Shepherd Dog">German Shepherd Dog</option>
+    <option value="Dachshund">Dachshund</option>
+    <option value="Poodle">Poodle</option>
+    <option value="Beagle">Beagle</option>
+    <option value="Rottweiler">Rottweiler</option>
+    <option value="German Shorthaired Pointer">German Shorthaired Pointer</option>
+    <option value="Bulldog">Bulldog</option>
+    <option value="Cane Corso">Cane Corso</option>
+    <option value="Cavalier King Charles Spaniel">Cavalier King Charles Spaniel</option>
+    <option value="Yorkshire Terrier">Yorkshire Terrier</option>
+    <option value="Australian Shepherd">Australian Shepherd</option>
+    <option value="Doberman Pinscher">Doberman Pinscher</option>
+    <option value="Pembroke Welsh Corgi">Pembroke Welsh Corgi</option>
+    <option value="Miniature Schnauzer">Miniature Schnauzer</option>
+    <option value="Boxer">Boxer</option>
+    <option value="Pomeranian">Pomeranian</option>
+    <option value="Bernese Mountain Dog">Bernese Mountain Dog</option>
+    <option value="Shih Tzu">Shih Tzu</option>
+    <option value="Great Dane">Great Dane</option>
+    <option value="Boston Terrier">Boston Terrier</option>
+    <option value="Chihuahua">Chihuahua</option>
+    <option value="Havanese">Havanese</option>
+    <option value="Border Collie">Border Collie</option>
+    <option value="English Springer Spaniel">English Springer Spaniel</option>
+    <option value="Miniature American Shepherd">Miniature American Shepherd</option>
+    <option value="Shetland Sheepdog">Shetland Sheepdog</option>
+    <option value="Siberian Husky">Siberian Husky</option>
+    <option value="Brittany">Brittany</option>
+    <option value="Belgian Malinois">Belgian Malinois</option>
+    <option value="Cocker Spaniel">Cocker Spaniel</option>
+    <option value="Basset Hound">Basset Hound</option>
+    <option value="English Cocker Spaniel">English Cocker Spaniel</option>
+    <option value="Vizsla">Vizsla</option>
+    <option value="Maltese">Maltese</option>
+    <option value="Pug">Pug</option>
+    <option value="Collie">Collie</option>
+    <option value="Mastiff">Mastiff</option>
+    <option value="Rhodesian Ridgeback">Rhodesian Ridgeback</option>
+    <option value="Papillon">Papillon</option>
+    <option value="Portuguese Water Dog">Portuguese Water Dog</option>
+    <option value="Shiba Inu">Shiba Inu</option>
+    <option value="West Highland White Terrier">West Highland White Terrier</option>
+    <option value="Newfoundland">Newfoundland</option>
+    <option value="Australian Cattle Dog">Australian Cattle Dog</option>
+    <option value="Whippet">Whippet</option>
+    <option value="Bichon Frise">Bichon Frise</option>
+    <option value="Dalmatian">Dalmatian</option>
+  </select>
+</div>
+                <div class="form-group">
+                  <label class="form-label" for="dog-size">Size</label>
+                  <select class="form-control" id="dog-size" name="dog-size">
+                    <option value="" disabled selected>Select size</option>
+                    <option value="Small">Small (up to 10 kg)</option>
+                    <option value="Medium">Medium (10-25 kg)</option>
+                    <option value="Large">Large (25+ kg)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="dog-gender">Dog's Gender</label>
+                  <select class="form-control" id="dog-gender" name="dog-gender">
+                    <option value="" disabled selected>Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="dog-energy">Energy Level</label>
+                  <select class="form-control" id="dog-energy" name="dog-energy">
+                    <option value="" disabled selected>Select</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                  </select>
+                  <span class="form-hint"> Natural baseline for physical stamina and need for activity.</span>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="dog-personality">Personality</label>
+                  <select class="form-control" id="dog-personality" name="dog-personality">
+                    <option value="" disabled selected>Select</option>
+                    <option value="Friendly">Friendly</option>
+                    <option value="Playful">Playful</option>
+                    <option value="Calm">Calm</option>
+                    <option value="Curious">Curious</option>
+                    <option value="Shy">Shy</option>
+                    <option value="Adventurous">Adventurous</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="dog-play">Play Style</label>
+                  <select class="form-control" id="dog-play" name="dog-play">
+                    <option value="" disabled selected>Select</option>
+                    <option value="Indoor">Indoor</option>
+                    <option value="Outdoor">Outdoor</option>
+                    <option value="Both">Both</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="dog-compat">Compatibility With</label>
+                <select class="form-control" id="dog-compat" name="dog-compat">
+                  <option value="" disabled selected>Select</option>
+                  <option value="All dogs">All dogs</option>
+                  <option value="Small & Medium dogs">Small & Medium dogs</option>
+                  <option value="Large dogs">Large dogs only</option>
+                  <option value="Female dogs">Female dogs only</option>
+                  <option value="Male dogs">Male dogs only</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="dog-vaccinated">Vaccination Status</label>
+                <select class="form-control" id="dog-vaccinated" name="dog-vaccinated">
+                  <option value="" disabled selected>Select</option>
+                  <option value="Yes">Yes - fully vaccinated</option>
+                  <option value="Partial">Partially vaccinated</option>
+                  <option value="No">Not vaccinated</option>
+                </select>
+                <div class="form-hint"> Namely: Rabies and DHPP/DA2PP. </div>
+                <div class="form-hint"> We recommend keeping your dog vaccinated for their safety and the safety of others.</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="dog-about">About Your Dog</label>
+                <textarea class="form-control" id="dog-about" name="dog-about" rows="4"
+                  placeholder="Tell us about your dog's personality, quirks, and anything others should know..."></textarea>
+              <div class="form-hint" id="dog-char-count">0/200</div>
+                </div>
+
+              <!-- Photo upload -->
+              <div class="form-group">
+                <label class="form-label">Dog Photos/Videos (optional)</label>
+                <div class="file-upload-area" id="drop-zone">
+                  <label class="file-upload-label" for="dog-photos">
+                    <strong>Click to upload</strong> or drag and drop
+                    <br />
+                    <span style="font-size: 0.78rem;">JPG, PNG, MP4 up to 10MB</span>
+                  </label>
+                  <input type="file" id="dog-photos" name="dog-photos"
+                    accept="image/*,video/*" multiple />
+                </div>
+                <div id="file-preview" style="margin-top: var(--space-sm);"></div>
+              </div>
+
+            
+            <br>
+
+            <!-- SECTION 3: Matching Preferences -->
+              <div class="form-section-title">
+                Matching Preferences
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="pref-size">Preferred Dog Size</label>
+                  <select class="form-control" id="pref-size" name="pref-size">
+                    <option value="Any">Any size</option>
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="pref-interaction">Type of Meetup</label>
+                  <select class="form-control" id="pref-interaction" name="pref-interaction">
+                    <option value="Any">Any</option>
+                    <option value="Playdate">Playdate</option>
+                    <option value="Walk">Walk</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="pref-personality">Preferred Personality</label>
+                <select class="form-control" id="pref-personality" name="pref-personality">
+                  <option value="Any">Any</option>
+                    <option value="Friendly">Friendly</option>
+                    <option value="Playful">Playful</option>
+                    <option value="Calm">Calm</option>
+                    <option value="Curious">Curious</option>
+                    <option value="Shy">Shy</option>
+                    <option value="Adventurous">Adventurous</option>
+                  </select>
+                </select>
+              </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg" id="signup-submit">
+              Create My Account
+            </button>
+
+          </form>
+
+          <p class="auth-switch">
+            Already have an account?
+            <a href="login.html">Log in</a>
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <span class="footer-brand">Sniffer</span>
+    </div>
+    <div class="container">
+  <p class="footer-copy">
+      &copy; 2026 Sniffer. All rights reserved.
+    </p>
+    </div>
+  </footer>
+
+
+  <script>
+      // character counter for "About You" textarea
+
+  const ownerTextarea = document.getElementById("about-owner");
+  const ownerCounter = document.getElementById("owner-char-count");
+  
+  const dogTextarea = document.getElementById("dog-about");
+  const dogCounter = document.getElementById("dog-char-count");
+
+  ownerTextarea.addEventListener("input", () => {
+    ownerCounter.textContent = `${ownerTextarea.value.length}/200`;
+  });
+
+  dogTextarea.addEventListener("input", () => {
+    dogCounter.textContent = `${dogTextarea.value.length}/200`;
+  });
+
+  </script>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/signup.js"></script>
+</body>
+</html>

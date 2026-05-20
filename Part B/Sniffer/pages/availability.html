@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Sniffer || My Availability</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <!-- <link rel="stylesheet" href="../css/availability.css" /> --- IGNORE (no separate CSS file yet for this page) -->
+</head>
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="home.html" class="navbar-brand" aria-label="Sniffer home">
+        <span class="brand-paw" aria-hidden="true"><img src="../images/heart-paw-yellow.png" alt="Sniffer paw icon" class="brand-logo"/></span>
+        Sniffer
+      </a>
+      <button class="navbar-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" role="list">
+        <li><a href="home.html">Discover</a></li>
+        <li><a href="matches.html">My Matches</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="availability.html" class="active">Availability</a></li>
+        <li><a href="recommendations.html">Community</a></li>
+        <li><a href="login.html" id="nav-logout-link">Log Out</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="page-content" id="main-content">
+    <div class="container">
+
+      <div class="section-title animate-in">
+        <h1>My Availability</h1>
+        <p>Set when you and your dog are free for playdates and walks.</p>
+      </div>
+
+      <!-- Alerts -->
+      <div class="alert alert-success" id="save-success" role="status" hidden>
+        Availability saved!
+      </div>
+      <div class="alert alert-error" id="save-error" role="alert" hidden></div>
+
+      <div class="avail-layout animate-in animate-in-delay-1">
+
+        <!-- ===== ADD SLOT FORM ===== -->
+        <div class="card avail-form-card">
+          <div class="card-body">
+            <h3 class="avail-form-title">
+              <span aria-hidden="true">+</span> Add Time Slot
+            </h3>
+
+            <form id="avail-form" novalidate aria-label="Add availability form">
+
+              <div class="form-group">
+                <label class="form-label" for="avail-day">
+                  Day <span class="required-star" aria-hidden="true">*</span>
+                </label>
+                <select class="form-control" id="avail-day" required>
+                  <option value="">Select a day</option>
+                  <option value="Monday">Monday</option>
+                  <option value="Tuesday">Tuesday</option>
+                  <option value="Wednesday">Wednesday</option>
+                  <option value="Thursday">Thursday</option>
+                  <option value="Friday">Friday</option>
+                  <option value="Saturday">Saturday</option>
+                  <option value="Sunday">Sunday</option>
+                </select>
+                <span class="error-message" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="avail-start">
+                  Start Time <span class="required-star" aria-hidden="true">*</span>
+                </label>
+                <input class="form-control" type="time" id="avail-start" required />
+                <span class="error-message" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="avail-end">
+                  End Time <span class="required-star" aria-hidden="true">*</span>
+                </label>
+                <input class="form-control" type="time" id="avail-end" required />
+                <span class="error-message" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="avail-type">Meetup Type</label>
+                <select class="form-control" id="avail-type">
+                  <option value="Any">Any</option>
+                  <option value="Playdate">Playdate</option>
+                  <option value="Walk">Walk</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">
+                Add Slot
+              </button>
+
+            </form>
+          </div>
+        </div>
+
+        <!-- ===== SLOT LIST ===== -->
+        <div class="avail-list-wrapper">
+          <h3 class="avail-list-title">Your Schedule</h3>
+          <div id="slots-list" aria-live="polite">
+            <!-- Populated by JS -->
+          </div>
+          <div id="no-slots" class="no-slots" hidden>
+            <p>No availability set yet. Add a time slot to get started.</p>
+          </div>
+
+          <!-- Save button -->
+          <div id="save-area" hidden>
+            <button class="btn btn-primary" id="btn-save-avail">
+              Save Availability
+            </button>
+          </div>
+        </div>
+
+      </div><!-- /avail-layout -->
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span class="footer-brand">Sniffer</span>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="home.html">Discover</a>
+        <a href="matches.html">Matches</a>
+        <a href="recommendations.html">Community</a>
+      </nav>
+    </div>
+    <div class="container">
+        <p class="footer-copy">
+      &copy; 2026 Sniffer. All rights reserved.
+    </p>
+    </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/validation.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/availability.js"></script>
+</body>
+</html>

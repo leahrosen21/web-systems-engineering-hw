@@ -1,0 +1,337 @@
+/* =========================================
+   home.css — Styles for the swipe/home page
+   ========================================= */
+
+/* ----- Page header ----- */
+.home-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.home-header h1 {
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+
+/* ----- Swipe layout ----- */
+.swipe-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+/* ----- Card Deck ----- */
+.card-deck {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 560px;
+}
+
+/* Each dog card sits on top of the previous */
+.dog-card {
+  position: absolute;
+  inset: 0;
+  background: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* Stack depth via z-index set in JS */
+}
+
+.dog-card:active {
+  cursor: grabbing;
+}
+
+/* Top card is slightly elevated */
+.dog-card.top-card {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Card image */
+.dog-card-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-bg));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  overflow: hidden;
+}
+
+.dog-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Card body */
+.dog-card-body {
+  padding: var(--space-md) var(--space-lg);
+}
+
+.dog-card-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+.dog-card-meta {
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  margin-bottom: var(--space-sm);
+  font-weight: 600;
+}
+
+.dog-card-desc {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+  /* Clamp to 2 lines so card doesn't overflow */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dog-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+.dog-card-owner {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Swipe hint overlays (like/nope indicators) */
+.swipe-hint {
+  position: absolute;
+  top: 24px;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+}
+
+.swipe-hint-sniff {
+  left: 20px;
+  color: var(--color-primary);
+  border: 3px solid var(--color-primary);
+  background: rgba(177, 112, 232, 0.08);
+}
+
+.swipe-hint-skip {
+  right: 20px;
+  color: var(--color-error);
+  border: 3px solid var(--color-error);
+  background: rgba(229, 57, 53, 0.08);
+}
+
+/* ----- No more cards state ----- */
+.no-more-cards {
+  width: 100%;
+  max-width: 400px;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-more-inner {
+  text-align: center;
+  padding: var(--space-xl);
+  background: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  border: 2px dashed var(--color-border);
+}
+
+.no-more-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--space-md);
+}
+
+.no-more-inner h3 {
+  margin-bottom: var(--space-sm);
+  color: var(--color-accent);
+}
+
+.no-more-inner p {
+  margin-bottom: var(--space-lg);
+  font-size: 0.95rem;
+}
+
+/* ----- Action buttons ----- */
+.swipe-actions {
+  display: flex;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-full);
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: transform var(--transition), box-shadow var(--transition);
+  border: 3px solid;
+}
+
+.action-btn:hover {
+  transform: scale(1.12);
+  box-shadow: var(--shadow-md);
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.skip-btn {
+  background: #FFF0F0;
+  border-color: var(--color-error);
+  color: var(--color-error);
+  font-size: 1.3rem;
+}
+
+.sniff-btn {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+  color: var(--color-accent);
+  width: 86px;
+  height: 86px;
+  font-size: 1.6rem;
+  /* Pulse animation to draw attention */
+  animation: pulse 2.5s ease infinite;
+}
+
+.action-label {
+  font-size: 0.7rem;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* ----- Match Modal ----- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 26, 62, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+}
+
+.modal-overlay[hidden] {
+  display: none;
+}
+
+.modal-box {
+  background: var(--color-card-bg);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  border: 3px solid var(--color-primary-light);
+}
+
+.match-confetti {
+  font-size: 2rem;
+  margin-bottom: var(--space-md);
+  animation: pulse 1s ease infinite;
+}
+
+.modal-box h2 {
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.modal-box p {
+  margin-bottom: var(--space-md);
+}
+
+.match-contact {
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin-bottom: var(--space-lg);
+  border: 2px solid var(--color-primary-light);
+}
+
+.match-contact-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  font-weight: 700;
+  color: var(--color-text);
+  font-size: 1rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ----- Swipe animations (applied by JS) ----- */
+.swiping-right {
+  animation: swipeRight 0.45s ease forwards;
+}
+
+.swiping-left {
+  animation: swipeLeft 0.45s ease forwards;
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 480px) {
+  .card-deck {
+    max-width: 340px;
+    height: 500px;
+  }
+
+  .dog-card-image {
+    height: 230px;
+  }
+
+  .swipe-actions {
+    gap: var(--space-lg);
+  }
+
+  .sniff-btn {
+    width: 76px;
+    height: 76px;
+  }
+}

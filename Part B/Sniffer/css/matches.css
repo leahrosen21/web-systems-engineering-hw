@@ -1,0 +1,154 @@
+/* matches.css */
+.matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-lg);
+}
+
+.match-card {
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.match-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.match-card-avatar {
+  width: 100%;
+  height: 160px;
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-bg));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+}
+
+.match-card-body {
+  padding: var(--space-md);
+}
+
+.match-card-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.match-card-meta {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.match-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--color-primary-light);
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.no-matches {
+  text-align: center;
+  padding: var(--space-2xl);
+}
+
+.no-matches-icon {
+  font-size: 3.5rem;
+  display: block;
+  margin-bottom: var(--space-md);
+  opacity: 0.5;
+}
+
+.no-matches h3 {
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.no-matches p {
+  margin-bottom: var(--space-lg);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 26, 62, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+}
+
+.modal-overlay[hidden] { display: none; }
+
+.modal-box {
+  background: var(--color-card-bg);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  max-width: 460px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  border: 3px solid var(--color-primary-light);
+}
+
+.modal-dog-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.modal-avatar {
+  font-size: 3.5rem;
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-bg));
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px solid var(--color-border);
+}
+
+.modal-dog-info h2 { margin-bottom: 4px; color: var(--color-accent); }
+.modal-dog-info p  { font-size: 0.88rem; }
+
+.modal-section {
+  margin-bottom: var(--space-lg);
+}
+
+.modal-section-title {
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--space-sm);
+}
+
+.modal-contact-box {
+  background: var(--color-bg);
+  border: 2px solid var(--color-primary-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.modal-close-btn {
+  margin-top: var(--space-lg);
+}
